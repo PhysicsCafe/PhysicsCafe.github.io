@@ -1,0 +1,559 @@
+\documentclass{article}
+\everymath{\displaystyle}
+\usepackage{color}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[lmargin=2.5cm, rmargin=2.5cm,tmargin=3cm,bmargin=2.5cm]{geometry}
+\usepackage{hyperref}
+\hypersetup{
+colorlinks=true,
+linkcolor=blue,
+urlcolor=blue
+}
+
+\def\Vec#1{\mathbf{\boldsymbol{#1}}}
+\def\Hat#1{\hat{\boldsymbol{#1}}}
+\def\Sin#1{\sin\left(#1\right)}
+\def\Cos#1{\cos\left(#1\right)}
+\def\Sinh#1{\sinh\left(#1\right)}
+\def\Cosh#1{\cosh\left(#1\right)}
+\def\Exp#1{\exp\left(#1\right)}
+\def\ket#1{|#1\rangle}
+\def\bra#1{\langle#1|}
+\def\braket#1#2{\langle#1|#2\rangle}
+\def\ketbra#1#2{|#1\rangle\langle #2|}
+\def\cvii#1#2{\left(\begin{array}{c}#1\\#2\end{array}\right)}
+\def\rvii#1#2{\left(\begin{array}{cc}#1&#2\end{array}\right)}
+\def\matii#1#2#3#4{\left(\begin{array}{cc}#1&#2\\#3&#4\end{array}\right)}
+\def\mfsz#1#2{\mbox{\fontsize{#1}{#1}\selectfont $#2$}}
+\newcommand{\cviii}[3]
+    {\left(\begin{array}{c}#1\\#2\\#3\end{array}\right)}
+\newcommand{\cviiii}[4]
+    {\left(\begin{array}{c}#1\\#2\\#3\\#4\end{array}\right)}
+\newcommand{\rviii}[3]
+    {\left(\begin{array}{ccc}#1&#2&#3\end{array}\right)}
+\newcommand{\rviiii}[4]
+    {\left(\begin{array}{cccc}#1&#2&#3&#4\end{array}\right)}
+\newcommand{\matiii}[9]
+    {\left(\begin{array}{ccc}#1&#2&#3\\#4&#5&#6\\#7&#8&#9\end{array}\right)}
+
+\newcommand{\leveli}[1]{\part{#1}}
+\newcommand{\levelii}[1]{\section{#1}}
+\newcommand{\leveliii}[1]{\subsection{#1}}
+\newcommand{\leveliiii}[1]{\subsubsection{#1}}
+
+%%% I'm assuming I'll have a blank line under every heading %%%
+\newcommand{\head}[1]{ \vspace{12pt} {\bf #1} \vspace{-12pt}\\ }
+\newcommand{\nbhead}[1]{ \vspace{12pt} {#1} \vspace{-12pt}\\ }
+
+%%% paragraph type skip - NO blank lines around it %%%
+\def\p{ \vspace{10pt}\\ }
+
+\begin{document}
+\hyphenpenalty 10000
+\exhyphenpenalty 10000
+
+% These next are to suppress Underfull and Overfull errors
+\raggedbottom 
+\hbadness=99999
+\hfuzz=9999pt
+
+\setlength{\parindent}{0pt}
+\linespread{1.5} \selectfont
+%\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% Title %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+%\vspace*{64pt}
+
+\fontsize{18}{18}\selectfont
+{\bf The transition from discrete to continuous spaces}
+
+%\vspace{24pt}\\
+%\fontsize{18}{18}\selectfont
+%Mike Witt
+%\vspace{12pt}\\
+%msg2mw@gmail.com
+%\vspace{24pt}\\
+
+\fontsize{12}{12}\selectfont
+(Version: \today)
+\vspace{4pt}\\
+
+%\fontsize{12}{12}\selectfont
+%Copyright \textcircled{c} 2012 by Mike Witt
+\end{center}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fontsize{12}{12}\selectfont
+
+\head{What this note is about}
+
+The old Porland and Denver groups spent several months studying quantum
+theory in a discrete
+setting. That is, in a finite vector space, where states are vectors and
+operators are matrices. The mathematics here (basic linear algebra) is
+pretty easy. The online group is now looking at this same material
+on Sundays.
+\p
+We are now starting to look at quantum mechanics, which is a continuous
+theory. The states are functions and the operators are are things like
+derivatives. The math here (calculus, differential equations, and Fourier
+transforms) is significantly more difficult.
+\p
+And yet (I claim) the underlying {\it theory} is in fact {\it exactly the
+same} once you strip out the mathematical complexities.
+\p
+In order to do this, we need to understand the relationship between the
+kind of mathematical space we've been using for quantum information theory
+and the kind of space we'll now be using for quantum mechanics. Explaining
+the transition between these two spaces is the purpose of this write-up.
+
+\head{Formal vs informal descriptions}
+
+In what follows I am going to make various claims about the relationship
+of objects and procedures used in a finite discrete vector space vs an
+infinite continuous one. There are two ways to go about discussing these
+claims. 
+
+\nbhead{(1) The formal approach}
+
+The formal (axiomatic) approach would be to list out the postulates (axioms)
+of (for example) vector spaces. Then we would take a specific set of functions
+and apply all the axioms. Proving that these functions fulfilled all of
+the vector space axioms, we would have shown that they are elements of a
+vector space -- i.e., vectors. This is how we would go about {\it proving}
+the claims. 
+\p
+This is a good thing to do, and if you want to give it a shot, take a look
+at the vector space axioms, and see what happens when you try to apply them
+to a function. You can find one way of breaking down the axioms at:
+\begin{quote}
+\href{
+https://github.physicscafe.org/2020-QM-Series/120-Vector\_Space\_Axioms.pdf}
+{https://github.physicscafe.org/2020-QM-Series/120-Vector\_Space\_Axioms.pdf}
+\end{quote}
+
+(If anybody actually wants to try this, it might be a good idea if I helped
+you get started. There are some important details that I haven't mentioned :-)
+\p
+We are {\it not} going to follow the formal approach here. I won't be
+saying any more about it in this note.
+
+\nbhead{(2) The informal approach}
+
+What we {\it are} going to do is to take an informal approach to each claim
+about a relationship between the two spaces. I'm not going to try to
+{\it prove} that they are true. I'm simply going to explain {\it how} you can
+look at them as being true and hopefully provide some feeling for {\it why}
+you would want to do this, in practical terms. 
+
+\head{Thinking about a function as a vector}
+
+In this little section I'm not going to worry about bras vs kets (or about 
+conjugation) and I'll just write a vector as a list of numbers in a row.
+This is just to save space and has no other significance.
+
+\begin{quote}
+$f = \left( f_1, f_2, f_3, ... f_n\right)$
+\end{quote}
+
+So the vector $f$ has $n$ elements: $f_1$ through $f_n$.
+\p
+Now when it comes to functions, we often think of them as a ``machine''
+that inputs the independent variable and outputs the resulting
+value:
+
+\begin{quote}
+$
+x \rightarrow {\fbox{ \Large{$f$} }} \rightarrow f(x)
+\p
+\mathrm{if} \;\; f(x) = x^2 \;\; \mathrm{then}\;\;
+3 \rightarrow {\fbox{ \Large{$f$} }} \rightarrow 9 
+$
+\end{quote}
+
+But here we're going to take a different view of a function. We're going to
+think of it simply as a list of numbers corresponding to the ``outputs.''
+If $f(x) = x^2$ then:
+
+\begin{quote}
+$f = \left( \ldots \;4\; \ldots \;9\; \dots \;16\; \ldots \right)$
+\end{quote}
+
+The reason for the ellipses is that $f$ doesn't just operate on integers, but
+rather on any real number. So there are actually a {\it continuously infinite}
+number of elements on this list. We can consider the independent variable to
+be the index into this list. 
+
+\begin{quote}
+$f(2)=4, \;\; f(2.5)=6.25, \;\; f(3)=9$, and so on.
+\end{quote}
+\pagebreak
+So we have both functions and vectors as essentially the same thing. It's
+just that:
+\begin{enumerate}
+\item We typically use subscripts to index into vectors: $f_n$ and
+``arguments'' to index into functions: $f(x)$.
+\item Usually the index to a vector is an integer and the index to a function
+is a real number.
+\end{enumerate}
+
+\head{Inner Products}
+
+Here's how we've been computing the inner product of two vectors:
+\begin{quote}
+$
+\braket{\phi}{\psi} 
+= \rviii{\phi^*_1}{\phi^*_2}{\ldots} \cviii{\psi_1}{\psi_2}{\ldots}
+= \phi^*_1\psi_1 + \phi^*_2 \, \psi_2 + ...
+$
+\end{quote}
+What we get is a scalar that results from adding the products of all
+the corresponding individual elements of the two vectors. This could be
+summarized, for two vectors with $N$ elements, as:
+
+\begin{quote}
+$\displaystyle\sum^N_{k=1} \phi^*_k \psi_k$
+\end{quote}
+
+But suppose that our vectors are functions, and have an infinite number
+of elements. We can try writing:
+
+\begin{quote}
+$\displaystyle\sum^{\infty}_{k=1} \phi^*_k \psi_k$
+\end{quote}
+
+But there's a problem. A sum like this is going to be infinite.
+And of course we want a finite result. We could try to address the situation
+by multiplying each product by an infinitesimal, in hopes that the resulting
+sum would be finite:
+
+\begin{quote}
+$\displaystyle\sum^{\infty}_{k=1} \phi^*_k \psi_k \, dk$
+\end{quote}
+
+But there's another problem, which is that we are going to be summing over
+a {\it continuously} infinite number of elements. You probably see where I'm
+heading here. We {\it have} a mathematical procedure to sum a continuously
+infinite number of elements multiplied by an infinitesimal. It's called
+an integral:
+
+\begin{quote}
+$\displaystyle\int^{\infty}_1 \phi^*(k) \psi(k) \, dk$
+\end{quote}
+
+And this is why an integral is an inner product. It's not that {\it every}
+integral is an inner product. But when we do an inner product in function
+space it will be an integral.
+
+\head{Projection}
+
+Projection is the process we use to find out ``how much'' of one vector
+lies along another vector. That is, $\braket{\phi}{\psi}$ tells us how much
+of $\ket{\psi}$ lies along $\ket{\phi}$.
+We can do the same thing with functions.
+The projection $\int\phi(x)^* \psi(x)\, dx$ tells us ``how much'' 
+of $\psi(x)$ lies along $\phi(x)$. 
+
+\head{Normalization and Orthogonality}
+
+A vector is normalized (has a length of one) if its inner product with
+itself is equal to one: $\braket{\psi}{\psi} = 1$. So if we're working
+with functions, then since an inner product is an integral, the
+normalization criterion is: 
+\begin{quote}
+$\displaystyle\int_a^b \psi^*(x) \psi(x) \, dx = 1$
+\end{quote}
+
+Similarly, we know that two vectors are orthogonal if one has a zero
+projection onto the other (an inner product of zero):
+$\braket{\phi}{\psi} = 0$. So the test for orthogonal functions is:
+\begin{quote}
+$\displaystyle\int_a^b \phi^*(x) \psi(x) \, dx = 0$
+\end{quote}
+
+If you haven't run into these concepts before, ideas like how much of one
+function ``lies along'' another or two functions being ``orthogonal'' to
+one another might sound meaningless. But (in an abstract sense) functions
+are vectors, and they do have these relationships. These concepts come
+into play when we talk about bases and change of basis for functions.
+
+\head{Bases}
+
+If functions are vectors, then the space they live in is a vector space,
+and there must be a basis out of which we can construct every function
+in the space. 
+\p
+Let's start with an example. Take the space of functions with a
+one-dimensional, finite domain (a line segment), where the functions all
+smoothly come to zero at the limits of the domain: 
+\begin{quote}
+$f(x):\; a \leq x \leq b, \; f(a)=0, \; f(b)=0$.
+\end{quote}
+
+In a space like this, appropriately constructed sine functions form a
+basis, out of which we can construct any function in the space.
+{\color{red}{\it See the ...}}
+
+\pagebreak
+
+\head{The ``number'' of basis functions can be discrete or continuous}
+
+In function space there are always an infinite number of basis functions.
+But that infinity can be either discrete (like the integers) or
+continuous (like the real numbers). 
+\p
+Don't confuse this with the number of {\it elements} that a given function
+(vector) has. That number is always continuous. What we're talking
+about here is {\it how many functions} you need to form a basis.
+\p
+When a function ranges over a finite domain: $a \leq x \leq b$,
+we typically
+have a discrete infinity of basis functions. When the function is 
+defined over all space: $-\infty \leq x \leq +\infty$, then we typically
+have a continuous infinity of basis functions.
+
+\head{Change of basis}
+
+We do a change of basis with a series of projections (inner products).
+\p
+Say we have a set of basis vectors $\{\,\ket{b_n}\}$ and a vector $\ket{\psi}$
+written in the default basis. In order to write $\ket{\psi}$ in the
+$b$ basis, we project it onto each of the $b$ basis vectors. Each projection
+yields one of the elements of $\ket{\psi}$ in the $b$ basis:
+
+\begin{quote}
+$
+c_1 = \braket{b_1}{\psi}\\
+c_2 = \braket{b_2}{\psi}\\
+\ldots\\
+\ket{\psi} = c_1 \ket{b_1} + c_2 \ket{b_2} + \ldots
+$
+\end{quote}
+
+We can neatly write this procedure in summation notation as:
+
+\begin{quote}
+$\ket{\psi} = \displaystyle{\sum_n} \braket{b_n}{\psi} \ket{b_n}$
+\end{quote}
+
+Now simply replace the inner product with an integral, change to function
+notation, and you have:
+\begin{quote}
+$
+\displaystyle\sum_n
+\left(\displaystyle\int b_n^*(x)\psi(x)\,dx \right)b_n(x)
+$
+\end{quote}
+
+This is called a {\it Fourier series}. It's usually written as two separate
+lines, corresponding more closely to the way I first did the projections
+above, using the $c$ variables for the weights:
+\begin{quote}
+$
+c_n = \displaystyle\int b_n^*(x)\psi(x)\,dx\p
+\psi(x) = \displaystyle\sum_n c_n\,b_n(x)
+$
+\end{quote}
+
+In the event that you have a {\it continuously} infinite number of basis
+functions you'll get a {\it Fourier transform}. This means you'll
+also have to use an integral to sum up the weighted basis functions. In this
+case people don't typically use $n$ as a subscript, since $n$ is so strongly
+associated with the integers:
+\begin{quote}
+$
+c_k = \displaystyle\int b_k^*(x)\psi(x)\,dx\p
+\psi(x) = \displaystyle\int c_k\, b_k(x)\, dk
+$
+\end{quote}
+
+\head{Examples with sine functions}
+\\\\
+\includegraphics[width=4.0in]{Graphics/Gaussian-0.png}
+\\
+\includegraphics[width=3.8in]{Graphics/Gaussian-add-0.png}
+\includegraphics[width=3.8in]{Graphics/Gaussian-result-0.png}
+\\
+\includegraphics[width=3.8in]{Graphics/Gaussian-add-2.png}
+\includegraphics[width=3.8in]{Graphics/Gaussian-result-2.png}
+\\
+\includegraphics[width=3.8in]{Graphics/Gaussian-add-4.png}
+\includegraphics[width=3.8in]{Graphics/Gaussian-result-4.png}
+
+\pagebreak
+
+\includegraphics[width=4.0in]{Graphics/Constant-0.png}
+\\
+\includegraphics[width=3.8in]{Graphics/Constant-add-0.png}
+\includegraphics[width=3.8in]{Graphics/Constant-result-0.png}
+\\
+\\
+\includegraphics[width=3.8in]{Graphics/Constant-add-2.png}
+\includegraphics[width=3.8in]{Graphics/Constant-result-2.png}
+\\
+\includegraphics[width=3.8in]{Graphics/Constant-add-4.png}
+\includegraphics[width=3.8in]{Graphics/Constant-result-4.png}
+\\
+\includegraphics[width=3.8in]{Graphics/Constant-add-6.png}
+\includegraphics[width=3.8in]{Graphics/Constant-result-6.png}
+
+\pagebreak
+
+\head{Probability vectors and functions}
+
+A quantum state, or state vector,
+is represented by a ket, which on the board we write
+as a column vector. Here I'm writing it as a row instead. Writing it as
+a row has no mathematical significance. It's still a ket, not a bra.
+The individual elements have not been conjugated.
+
+\begin{quote}
+$\ket{\psi} = ( \psi_1, \psi_2, \psi_3, ... )$
+\end{quote}
+
+As you may remember, the individual elements of the state vector are
+called {\it probability amplitudes.} They are not probabilities, but they
+are related to them. The probability of a measurement resulting in the
+state represented by $\psi_n$ is given by the ``modulus squared'' of
+$\psi_n$ or $|\psi_n|^2$. This is the same thing as $\psi_n \psi_n^*$.
+\p
+Now you could imagine a vector of probabilities, rather than a vector of
+probability amplitudes. Lets call this vector $\vec{P}$. In other words
+$\vec{P} = ( |\psi_1|^2, |\psi_2|^2, ...)$.
+\p
+All of the elements of $\vec{P}$, being probabilities, are positive real
+numbers. If $\vec{P}$ happened to have 16 elements, we could plot them
+like this:
+
+\includegraphics[width=6.0in]{Graphics/prob-vector1.png}
+\p
+We can think of $\vec{P}$ as a (discrete) {\it probability function.}
+
+\pagebreak
+
+If we want to find the probability of getting any of the results 2
+through 8, we simply add the probabilities:
+\begin{quote}
+    $Prob(2,8) = \sum_2^8 P_n$
+\end{quote}
+\includegraphics[width=6.0in]{Graphics/prob-vector2.png}
+
+\head{Probability density functions}
+
+As the size of $\vec{P}$ grows, it starts to look more and more like a
+continuous function:
+\p
+\includegraphics[width=6.0in]{Graphics/prob-vector3.png}
+\p
+\includegraphics[width=6.0in]{Graphics/prob-vector4.png}
+
+\pagebreak
+And, if our ``probability'' vector actually has an infinite number of
+elements, then:
+\p
+\includegraphics[width=6.0in]{Graphics/prob-vector7.png}
+\p
+\includegraphics[width=6.0in]{Graphics/prob-vector8.png}
+\p
+But there's a catch. With a continuous number of elements we can
+no longer do a simple summation. The summation of an infinite number
+of elements will be infinity. We need to do an integral over the desired
+range of what we now call the function P(x):
+\begin{quote}
+    $\int_a^b P(x)\, dx$
+\end{quote}
+
+$P(x)$ is no longer a probability function. It is now what we call
+a {\it probability density function}. The height of the function at each
+individual point
+no longer represents a finite probability, but rather the (infinitesimal)
+``density'' of the probability at that point.
+
+\pagebreak
+
+\head{The default basis and the Dirac delta}
+
+In a discrete vector space, the ``default'' or ``primary'' basis is a
+set of vectors which have a single $1$ component, with the other
+components zero. For example in a ``two bit'' (dimension four)
+vector space we have:
+
+\vspace{6pt}
+\begin{quote} 
+$\cviiii{1}{0}{0}{0}, \;\; \cviiii{0}{1}{0}{0}, \;\;
+\cviiii{0}{0}{1}{0}, \;\; \cviiii{0}{0}{0}{1}$
+\end{quote} 
+\vspace{6pt}
+
+Under most circumstances, we write out the components of all vectors in
+this default basis. So 
+projection onto the default basis simply ``picks out'' the individual
+components of the vector.
+\p
+An example. We have the state for two bits in a quantum computer:
+
+\begin{quote}
+    $\alpha \ket{00} + \beta\ket{01} + \gamma\ket{10} + \delta\ket{11}$
+\end{quote}
+
+If we write it as a column vector and project is onto the four primary
+basis vectors (called the ``classical basis'' in QC) then:
+\p
+$
+\arraycolsep=1.4pt % compress the space between row elements
+\rviiii{1}{0}{0}{0} \cviiii{\alpha}{\beta}{\gamma}{\delta} = \alpha,\;\;
+\rviiii{0}{1}{0}{0} \cviiii{\alpha}{\beta}{\gamma}{\delta} = \beta,\;\;
+\rviiii{0}{0}{1}{0} \cviiii{\alpha}{\beta}{\gamma}{\delta} = \gamma,\;\;
+\rviiii{0}{0}{0}{1} \cviiii{\alpha}{\beta}{\gamma}{\delta} = \delta
+$
+\p
+So what is the default basis in continuous function space? The ``components''
+of the functions are simply the function values (the points on the
+line that we plot when we draw the function). What kind of mathematical
+object will ``pick out'' these points when we do a projection?
+\p
+Bearing in mind that a projection is an integral, we are looking for
+something like this:
+
+\begin{quote}
+    $\int \delta_k f(x)\, dx = f(k)$
+\end{quote}
+
+where $\delta_k$ is the $k$th vector of the standard basis.
+
+\pagebreak
+
+There is such an object $\delta$ and it is called the Dirac delta.
+You might think the deltas as a
+(continuously infinite) set of basis vectors, each of which have one
+infinite component and all the rest of the components zero: 
+
+\vspace{6pt}
+\begin{quote} 
+$
+... \;\; 
+\cviiii{\infty}{0}{0}{0} ...\;\; 
+\cviiii{0}{\infty}{0}{0} ...\;\;
+\cviiii{0}{0}{\infty}{0} ...\;\; 
+\cviiii{0}{0}{0}{\infty} ...
+$
+\end{quote} 
+\vspace{6pt}
+When one of these vectors gets multiplied by the $dx$ in the integral,
+the infinity times the infinitesimal results in an infinitely high,
+infinitesimally thin ``spike'' {\it of unit area} which picks out the
+one number desired.
+But if that visualization doesn't work for you, you can just think of
+the object $\delta_k$ as being {\it defined} by the integral above.
+\p
+{\it Caveat: I've used a slightly non-standard notation above. The Dirac
+delta is normally defined as $\delta(x) = 0$ for $x\neq 0$ and the unit
+one spike when $x=0$, or $\int \delta(x-k) f(x)\, dx = f(k)$. So my
+$\delta_k$ is equivalent to $\delta(x-k)$ in the standard notation.}
+
+\end{document}
