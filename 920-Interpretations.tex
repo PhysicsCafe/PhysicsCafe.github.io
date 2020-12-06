@@ -1,0 +1,423 @@
+\documentclass[9pt,usenames,dvipsnames]{beamer}
+
+%\usetheme{Warsaw}
+%\usetheme{Rochester}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{PaloAlto}
+%\usetheme{Rochester}
+\usetheme{Madrid} % I think this one works best
+%\setbeamertemplate{page number in head/foot}[totalframenumber]
+\setbeamertemplate{frametitle}[default][center]
+\useoutertheme{infolines}
+\usecolortheme[named=brown]{structure}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, urlcolor=blue}
+
+% Only a few macros are use here, so I'll just put them inline
+\def\ket#1{|#1\rangle}
+
+%\titlegraphic{\includegraphics[width=5cm]{CircuitLounge.jpg}}
+\author{Mike Witt}
+\title{Interpretations of Quantum Theory}
+%\setbeamercovered{transparent} 
+\setbeamertemplate{navigation symbols}{} 
+\institute{Physics Cafe} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}[t]{Outline}
+%\tableofcontents%[part=1,pausesections]
+%\end{frame}
+
+\begin{frame}[t]{What needs to be interpreted?}
+\begin{itemize}
+\vspace{8pt}
+\item 
+We don't need to ``interpret'' (for example) Newton's 2nd law
+\begin{quote}
+\vspace{8pt}
+$acceleration = force / mass$
+\end{quote}
+\vspace{0pt}
+\item
+What's different about Schr\"odinger's equation, the equivalent
+in quantum mechanics?
+\begin{quote}
+\vspace{8pt}
+$i\hbar \frac{\partial}{\partial t}\psi(t) = \hat{H} \psi(t)$
+\end{quote}
+\end{itemize}
+
+\vspace{2pt}
+One difference is that we intuitively understand what 
+{\it acceleration, force,} and {\it mass} are. These are things that we all
+agree actually exist in the real world. We can locate them, measure them
+and so on.
+\vspace{12pt}\\
+When it comes to the main player in Schr\"odinger's equation, $\psi$,
+there is no general agreement on what it really is. We can't measure it in
+any direct way. We can't even say that it's located in some specific place.
+\vspace{12pt}\\
+And, there are other issues ...
+\end{frame}
+
+\begin{frame}[t]{The main issues}
+\begin{itemize}
+
+\vspace{8pt}
+\item 
+The ontological status of the wave function
+\vspace{6pt}\\
+What is $\psi$?
+
+\vspace{12pt}
+\item
+The locality debate
+\vspace{6pt}\\
+Does quantum theory imply reality has some kind of non-local aspect.
+
+\vspace{12pt}
+\item
+The measurement problem
+\vspace{6pt}\\
+The measurement postulate appears to contradict the rest of the theory.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Some interpretations}
+\begin{itemize}
+\vspace{6pt}
+\item The Textbook Interpretation
+\vspace{6pt}
+\item the ``No Interpretation'' Interpretation
+\vspace{6pt}
+\item The Copenhagen Interpretation
+\vspace{6pt}
+\item Everett
+\vspace{6pt}
+\item The Pilot Wave Interpretation (de Broglie / Bohm)
+\vspace{6pt}
+\item The Transactional Interpretation (Cramer / Kastner)
+\vspace{6pt}
+\item Wave function collapse theories
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{The Textbook Interpretation}
+  \vspace{8pt}
+  The wave function evolves according to Schr\"odinger's equation until
+  a measurement happens. Then the wave function collapses into one of its
+  basis states.
+  \vspace{16pt}\\
+  {\setlength\parindent{12pt}
+    Q: What {\it exactly} distinguishes a measurement from other interactions?
+    \vspace{8pt}\\
+    A: You'll know one when you see it.
+    \vspace{16pt}\\
+    Q: So $\psi$ real, or just a mathematical construction?
+    \vspace{8pt}\\
+    A: This is a physics textbook, not a philosophy book.
+  } 
+\end{frame}
+
+\begin{frame}[t]{No Interpretation}
+  \vspace{12pt}
+  We have a mathematical model, and we know how to use that model to
+  predict the results of observations that we make in the real world.
+  That's what a scientific theory consists of, and to ask for more
+  is reaching beyond the realm of science.
+  \vspace{8pt}\\
+  You may think that quantum theory is ``strange'' or that it raises
+  questions that don't come up in classical physics. But that's simply
+  because your intuitions about how things ``should'' be is conditioned
+  by the fact that you evolved as a macroscopic organism and not at
+  the scale where quantum effects predominate.
+  \vspace{8pt}\\
+  Note: I believe that Sidney Coleman, in his famous 
+  ``Quantum Mechanics in Your Face'' lecture, may be taking this position.
+  (See the references section.)
+\end{frame}
+
+\begin{frame}[t]{The Copenhagen Interpretation}
+  \vspace{12pt}
+  Often, the way quantum mechanics is discussed in a typical textbook is
+  called the ``Copenhagen interpretation.'' I don't believe this is correct.
+  First of all, Niels Bohr (the main guy in Copenhagen) appeared
+  to take a more-or-less positivist approach. Perhaps not unlike what I'm
+  calling the ``no interpretation.''
+  \vspace{8pt}\\
+  Secondly, there was no real consensus on the philosophy of quantum mechanics
+  among the other physicists associated with the Copenhagen group, such as
+  Werner Heisenberg, Wolfgang Pauli, and others. They all had their own
+  points of view.
+  \vspace{8pt}\\
+  Just to be clear, the first three viewpoints we've considered (Textbook,
+  No Interpretation, and Copenhagen) should not really be considered as
+  ``interpretations.'' They are, rather, heuristics for solving problems
+  (in the textbook case) or philosophical positions which deny the 
+  {\it need for} an interpretation. 
+
+\end{frame}
+
+\begin{frame}[t]{Everett's Interpretation}
+\begin{itemize}
+\item The status of the wave function
+  \vspace{6pt}\\
+  It seems to me that in Everett's approach $\psi$ is a mathematical
+  abstraction. But one which is fairly closely associated with the world,
+  as it really exists. Perhaps making its interpretation more straightforward.
+  Apparently some others disagree with this statement, saying that in
+  Everett the world is ``made out of'' the wave function. 
+\vspace{6pt}\\
+\item Locality / Non-locality
+  \vspace{6pt}\\
+  I don't believe Everett implies any sort of non-locality. I think
+  it can be interpreted in a perfectly local way. Again, apparently
+  not everyone agrees with this.
+\vspace{6pt}\\
+\item The measurement problem
+  \vspace{6pt}\\
+  This is the issue that Everett {\it clearly} addressed. A one line
+  explanation of Everett's interpretation could simply be:
+  {\bf Delete the measurement postulate!}
+  \vspace{6pt}\\
+  Everett has only unitary (linear) evolution ala Schr\"odinger's equation, 
+  and all the interactions implied by that. Nothing special happens when we do
+  something that we call a measurement. We (and our instruments) simply
+  interact with the systems we are observing, typically causing us to become
+  entangled with them.
+  \vspace{6pt}\\
+  Let's take a look at how this works ...
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Everett's Interpretation}
+Mike flips a quantum coin: $\ket{\mathrm{Coin}}\otimes\ket{\mathrm{Mike}}$
+\begin{itemize}
+
+\vspace{12pt}
+\item A textbook measurement
+    \vspace{12pt}\\
+    \fbox{
+    \begin{minipage}{0.43\textwidth}
+    \center{\underline{Before}}
+    \vspace{8pt}\\
+    $
+     \frac{1}{\sqrt{2}}\ket{\mathrm{H}} 
+     + \frac{1}{\sqrt{2}}\ket{\mathrm{T}}
+     \otimes \ket{\mathrm{What\;will\;it\;be?}}
+    $
+    \vspace{9pt}\\
+    \end{minipage}
+    }
+    \fbox{
+    \begin{minipage}{0.43\textwidth}
+    \center{\underline{After}}
+    \vspace{4pt}\\
+    Either: $\ket{\mathrm{H}}\otimes\ket{\mathrm{I\;see\;Heads}}$
+    \vspace{4pt}\\
+    Or: $\;\,\ket{\mathrm{T}}\otimes\ket{\mathrm{I\;see\;Tails}}$
+    \end{minipage}
+    }
+
+\vspace{16pt}
+\item An Everett {\it interaction}
+    \vspace{12pt}\\
+    \fbox{
+    \begin{minipage}{0.43\textwidth}
+    \center{\underline{Before}}
+    \vspace{8pt}\\
+    $
+     \frac{1}{\sqrt{2}}\ket{\mathrm{H}} 
+     + \frac{1}{\sqrt{2}}\ket{\mathrm{T}}
+     \otimes \ket{\mathrm{What\;will\;it\;be?}}
+    $
+    \vspace{4pt}
+    \end{minipage}
+    }
+    \fbox{
+    \begin{minipage}{0.43\textwidth}
+    \center{\underline{After}}
+    \vspace{8pt}\\
+    $
+     \frac{1}{\sqrt{2}}\ket{\textrm{\small H}} 
+     \otimes \ket{\textrm{\small See heads}}
+     + \frac{1}{\sqrt{2}}\ket{\textrm{\small T}}
+     \otimes \ket{\textrm{\small See tails}}
+    $
+    \vspace{-2pt}
+    \end{minipage}
+    }
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{Everett's Interpretation}
+\vspace{0pt}
+{\bf Problems with Everett}
+\begin{itemize}
+\vspace{6pt}
+\item It's incoherent
+    \vspace{6pt}\\
+    Some very smart people say this, or something close. I {\it think}
+    what they are {\it really} saying is that they simply can't accept
+    the physical reality of quantum superpositions. In order for Everett
+    to make any sense, you need to believe that superpositions are not
+    just mathematical tools for calculation, but that they reflect some
+    aspect of reality.
+\vspace{6pt}
+\item There's a problem with probabilities
+    \vspace{6pt}\\
+    This comes in a number of different forms ...
+\vspace{6pt}
+\item The basis ambiguity problem
+    \vspace{6pt}\\
+    In my view, this is the {\it real} problem (or mystery :-) with Everett.
+    Note that
+    this is typically called the ``preferred basis problem.'' I don't like
+    that terminology because it pre-supposed that there {\it is} a preferred
+    basis.
+    \vspace{6pt}\\
+    (Try to verbalize a short description of this.)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{The Pilot Wave Interpretation}
+\begin{itemize}
+  \item The status of the wave function
+  \vspace{6pt}\\
+    The wave function (or at least a part of it) is a real, physical entity
+    which exerts an influence on the paths of particles.
+  \vspace{6pt}
+  \item Locality / Non-locality
+  \vspace{6pt}\\
+    This interpretation has what some people have called 
+    ``non-locality with a vengeance,'' with the pilot wave exhibiting explicit
+    action at a distance.
+  \vspace{6pt}
+  \item The measurement problem
+  \vspace{6pt}\\
+    No problem here. In this interpretation we have real particles, with
+    real positions and real trajectories. When we make an observation of
+    the position of a particle, we simply see what that position actually is.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{The Pilot Wave Interpretation}
+\vspace{0pt}
+{\bf How the pilot wave works}
+\vspace{8pt}\\
+    Take the complex wave function $\psi(\vec{x},t)$ from Schrödinger's
+    equation. $\vec{x}$ is the position vector of a particle and $t$ 
+    is time. Like any complex function $\psi$ can be rewritten in exponential 
+    form as $\psi(\vec{x},t)=Re^{iS}$, where $R$ and $S$
+    are both real functions, and $S$ is the angle or phase in complex space.
+    \vspace{6pt}\\
+    Note: $S$ is a function of position and time, $S=S(\vec{x},t).$
+    \vspace{6pt}\\
+    We then replace Newton's 2nd law $a = F/m$ with the formula 
+    $v = \nabla S / m$. So in other words the velocity of a particle is 
+    equal to the gradient of the phase of the wave function (divided by 
+    the particle's mass). 
+    \vspace{6pt}\\
+    The fact that the velocity of the particle (rather than its acceleration)
+    depends on the pilot wave is why we say the wave exerts an ``influence''
+    rather than a ''force'' on the particle. In fact, the trajectories
+    of particles in the pilot wave interpretation look nothing like the way
+    we picture the trajectories of particles in Newtonian dynamics.
+\end{frame}
+
+\begin{frame}[t]{The Pilot Wave Interpretation}
+\vspace{0pt}
+{\bf Problems with the pilot wave}
+\begin{itemize}
+\vspace{6pt}
+\item Non-locality
+\vspace{6pt}\\
+    Some folks object to this interpretation simply because of the inherent
+    non-locality, saying something along the lines of 
+    ``it violates relativity.'' It's not clear how much force this objection
+    has. Although pilot wave scenarios appear to go against the ``spirit''
+    of (say) special relativity, all the physically verifiable events are the
+    same ones that you get with the standard theories and calculations.
+\vspace{6pt}
+\item Special initial conditions
+    \vspace{6pt}\\
+    In order to match the standard predictions of quantum theory, you need
+    to assume special initial conditions for all the particles' positions
+    and velocities (based on the Born rule).
+\vspace{6pt}
+\item Extensibility to quantum field theory
+    \vspace{6pt}\\
+    A more serious question arising out of the non-local nature of the
+    pilot wave is the issue of whether it can be extended to work with
+    quantum field theory. I'm really not sure what the status of this is.
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{The Transactional Interpretation}
+\end{frame}
+
+\begin{frame}[t]{Wave function collapse theories}
+\end{frame}
+
+\begin{frame}[t]{References}
+\vspace{0pt}
+\begin{itemize}
+\item \href{http://ucispace.lib.uci.edu/handle/10575/1302}
+    {The Theory of the Universal Wave Function} by Hugh Everett\\
+    Everett's thesis actually starts on page 9 of the pdf you can download
+    from this page.
+
+\item \href{https://www.goodreads.com/book/show/13688768-emergent-multiverse}
+    {The Emergent Multiverse} by David Wallace\\
+    This is currently the best up-to-date reference for Everett's
+    interpretation.
+
+\item \href{http://plato.stanford.edu/entries/qm-everett/\#7}
+    {Stanford - Everett's Relative-State Formulation of Quantum Mechanics}\\
+    \href{http://plato.stanford.edu/entries/qm-manyworlds/}
+    {Stanford - Many-Worlds Interpretation of Quantum Mechanics}\\
+    Two articles on Everett in Stanford's online Encyclopedia
+    (better quality than Wikipedia).
+
+\item \href{https://www.goodreads.com/book/show/1334044.The\_Quantum\_Theory\_of\_Motion}{The Quantum Theory of Motion} by Peter Holland\\
+    This appears to me to be one pretty complete book on (Bohm's version of?)
+    the pilot wave. But I've only looked it over a little bit, and there
+    are a {\it lot} of much more recent works on this topic.
+
+\item \href{https://www.barnesandnoble.com/w/quantum-non-locality-and-relativity-tim-maudlin/1100226576?ean=9781444331271}{Quantum Non-Locality and Relativity} by Time Maudlin\\
+    \href{https://www.barnesandnoble.com/w/philosophy-of-physics-tim-maudlin/1128567493?ean=9780691183527}{Philosophy of Physics: Quantum Theory} by Tim Maudlin\\
+    These two books by Tim Maudlin have {\it very} good discussions of the pilot wave, wave function collapse theories, and many other aspects of the philsophy of quantum theory. Not a good source on Everett, which Maudlin (mostly) dismisses as incoherent.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[t]{References}
+\vspace{0pt}
+\begin{itemize}
+\item \href{https://www.goodreads.com/book/show/26362020-the-quantum-handshake?ac=1&from_search=true&qid=Tta3kWOxqK&rank=1}{The Quantum Handshake} by John Cramer\\
+\item \href{https://www.goodreads.com/book/show/24509073-the-transactional-interpretation-of-quantum-mechanics?ac=1&from_search=true&qid=CrasunyOEg&rank=1}{The Transactional Interpretation of Quantum Mechanics} by Ruth Kastner\\
+\item \href{https://transactionalinterpretation.org/}{Ruth Kastner's Blog}
+\vspace{0pt}\\
+    John Cramer originated the transactional interpretation and Ruth Kastner is its current leading proponent. 
+\item \href{http://media.physics.harvard.edu/video/?id=SidneyColeman_QMIYF}{Sidney Coleman’s “Quantum Mechanics in Your Face” video}\\
+    I highly recommend this lecture by the late Sidney Coleman, who has his own very interesting viewpoint on things. IMO it starts to get interesting about 20 or so minutes in.
+
+\end{itemize}
+\end{frame}
+
+\end{document}
